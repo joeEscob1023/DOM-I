@@ -42,28 +42,71 @@ const siteContent = {
   },
 };
 
-const nav1 = document.querySelector("nav a:nth-child(1)");
-const nav2 = document.querySelector("nav a:nth-child(2)");
-const nav3 = document.querySelector("nav a:nth-child(3)");
-const nav4 = document.querySelector("nav a:nth-child(4)");
-const nav5 = document.querySelector("nav a:nth-child(5)");
-const nav6 = document.querySelector("nav a:nth-child(6)");
+const links = document.querySelectorAll("a");
 const navImage = document.querySelector(" .logo");
-const cta = document.querySelector(".cta");
 const ctaH1 = document.querySelector(".cta h1");
 const ctaButton = document.querySelector(".cta button");
-const img = document.querySelector(".cta img");
+const ctaImg = document.querySelector("#cta-img");
+const info = document.querySelectorAll(".text-content p");
+const infoArray = Array.from(info);
+const textContent = document.querySelectorAll(".text-content h4");
+const textContentArray = Array.from(textContent);
+const textContentPara = document.querySelectorAll(".text-content p");
+const middleImg = document.querySelector("#middle-img");
+const contactH4 = document.querySelector(".contact h4");
+const contactPara = document.querySelectorAll(".contact p");
+const contactParaArray = Array.from(contactPara);
+//console.log(textContentArray.innerHTML);
+//console.log(infoArray);
+console.log(links);
 
-nav1.textContent = "Services";
-nav2.textContent = "Product";
-nav3.textContent = "Vision";
-nav4.textContent = "Features";
-nav5.textContent = "About";
-nav6.textContent = "Contact";
+links.forEach((link, index) => {
+  console.log(link);
+  index++;
+  link.textContent = siteContent.nav[`nav-item-${index}`];
+});
 
 navImage.src = "img/logo.png";
 
-console.log(navImage);
+ctaH1.innerHTML = "DOM IS AWESOME";
+ctaButton.textContent = "Get Started";
+ctaImg.src = "img/header-img.png";
+
+textContentArray.forEach((item, index) => {
+  //console.log(item, index);
+  let itemTitle = siteContent.nav[`nav-item-${index}`];
+  //console.log(itemTitle);
+});
+
+console.log(infoArray);
+infoArray.forEach((item, index) => {
+  index++;
+  let itemTitle = siteContent.nav[`nav-item-${index}`].toLowerCase();
+  console.log(itemTitle.toLowerCase());
+  item.textContent =
+    siteContent["main-content"][`${itemTitle.toLowerCase()}-content`];
+});
+
+textContent[0].textContent = "Features";
+textContent[1].textContent = "About";
+
+middleImg.src = "img/mid-page-accent.jpg";
+
+textContent[2].textContent = "Services";
+textContent[3].textContent = "Product";
+textContent[4].textContent = "Vision";
+
+contactH4.textContent = "Contact";
+
+contactParaArray.forEach(function (para, index) {
+  console.log(para, index);
+
+  para.textContent = siteContent.contact;
+});
+
+// contactPara[0].textContent = siteContent["contact"].address;
+// contactPara[1].textContent = siteContent["contact"].email;
+// contactPara[2].textContent = siteContent["contact"].phone;
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
