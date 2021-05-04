@@ -42,7 +42,7 @@ const siteContent = {
   },
 };
 
-const links = document.querySelectorAll("a");
+const links = document.querySelectorAll("nav a");
 const navImage = document.querySelector(" .logo");
 const ctaH1 = document.querySelector(".cta h1");
 const ctaButton = document.querySelector(".cta button");
@@ -56,12 +56,8 @@ const middleImg = document.querySelector("#middle-img");
 const contactH4 = document.querySelector(".contact h4");
 const contactPara = document.querySelectorAll(".contact p");
 const contactParaArray = Array.from(contactPara);
-//console.log(textContentArray.innerHTML);
-//console.log(infoArray);
-console.log(links);
 
 links.forEach((link, index) => {
-  console.log(link);
   index++;
   link.textContent = siteContent.nav[`nav-item-${index}`];
 });
@@ -73,40 +69,41 @@ ctaButton.textContent = "Get Started";
 ctaImg.src = "img/header-img.png";
 
 textContentArray.forEach((item, index) => {
-  //console.log(item, index);
+  index++;
   let itemTitle = siteContent.nav[`nav-item-${index}`];
-  //console.log(itemTitle);
+
+  item.textContent =
+    siteContent["main-content"][`${itemTitle.toLowerCase()}-h4`];
 });
 
-console.log(infoArray);
 infoArray.forEach((item, index) => {
   index++;
   let itemTitle = siteContent.nav[`nav-item-${index}`].toLowerCase();
-  console.log(itemTitle.toLowerCase());
   item.textContent =
     siteContent["main-content"][`${itemTitle.toLowerCase()}-content`];
 });
 
-textContent[0].textContent = "Features";
-textContent[1].textContent = "About";
-
 middleImg.src = "img/mid-page-accent.jpg";
-
-textContent[2].textContent = "Services";
-textContent[3].textContent = "Product";
-textContent[4].textContent = "Vision";
 
 contactH4.textContent = "Contact";
 
-contactParaArray.forEach(function (para, index) {
-  console.log(para, index);
+contactPara[0].textContent = siteContent["contact"].address;
+contactPara[1].textContent = siteContent["contact"].email;
+contactPara[2].textContent = siteContent["contact"].phone;
 
-  para.textContent = siteContent.contact;
+//Styles
+links.forEach((link) => {
+  link.style.color = "green";
 });
 
-// contactPara[0].textContent = siteContent["contact"].address;
-// contactPara[1].textContent = siteContent["contact"].email;
-// contactPara[2].textContent = siteContent["contact"].phone;
+//button toggle
+const button = addEventListener("click", (e) => {
+  e.preventDefault();
+  const a = document.createElement("a");
+  a.textContent = "Press me to go to a fun website";
+  a.href = "https://www.google.com";
+  document.querySelector(".cta-text").appendChild(a);
+});
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
